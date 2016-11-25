@@ -2,6 +2,7 @@ import { environment } from "../../environments/environment";
 
 import { Component, OnInit } from '@angular/core';
 import { URLSearchParams, Http } from "@angular/http";
+import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from "../services/auth.service";
 import { OAuthService } from "angular2-oauth2/oauth-service";
@@ -18,7 +19,8 @@ export class MainComponent implements OnInit {
 
   constructor(private oauthService: OAuthService,
             private authService: AuthService,
-            private http: Http) { }
+            private http: Http,
+            private route: ActivatedRoute) { }
 
   ngOnInit() {
         // Login-Url
@@ -59,13 +61,13 @@ export class MainComponent implements OnInit {
             }
         });
 
-        /*this.route.params.subscribe((d) => {
+        this.route.queryParams.subscribe((d) => {
           console.log("params", d);
 
-          this.access_token = this.route.snapshot.params['access_token'];
+          this.access_token = d['access_token'];
 
           console.log("access_token", this.access_token);
-        });*/
+        });
   }
 
 
@@ -74,8 +76,7 @@ export class MainComponent implements OnInit {
   }
 
   public isLoggedIn() {
-      // Check if the user is logged in
-      return this.authService.isLoggedIn();
+    return !!this.access_token;
   }
 
 }
