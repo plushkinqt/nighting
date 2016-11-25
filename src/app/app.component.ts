@@ -1,8 +1,14 @@
+<<<<<<< Updated upstream
 import {Component, OnInit} from '@angular/core';
 import {OAuthService} from "angular2-oauth2/oauth-service";
 import {environment} from "../environments/environment";
 import {URLSearchParams, Http} from "@angular/http";
-import {AuthService} from "./services/auth.service";
+import { AuthService } from "./services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { OAuthService } from "angular2-oauth2/oauth-service";
+import { environment } from "../environments/environment";
+import { URLSearchParams, Http } from "@angular/http";
 
 @Component({
     selector: 'app-root',
@@ -11,11 +17,15 @@ import {AuthService} from "./services/auth.service";
 })
 
 export class AppComponent implements OnInit {
-    title = 'Nighting!';
 
     constructor(private oauthService: OAuthService,
                 private http: Http,
-                private authService: AuthService) {}
+                private authService: AuthService,
+                //private route: ActivatedRoute,
+                ) {}
+
+    private title = 'Nighting!';
+    private access_token: string;
 
     ngOnInit() {
         // Login-Url
@@ -48,30 +58,26 @@ export class AppComponent implements OnInit {
         //this.oauthService.tryLogin({});
 
         this.oauthService.tryLogin({
-        onTokenReceived: context => {
-            //
-            // Output just for purpose of demonstration
-            // Don't try this at home ... ;-)
-            //
-            console.log("logged in");
-            console.log(context);
+            validationHandler: context => {
+                var search = new URLSearchParams();
+                search.set('token', 'code');
+                search.set('response_type', 'code');
+                return this.http.get(this.oauthService.loginUrl, {search});
+            }
+        });
 
-            console.log("sessionStorage", sessionStorage);
+        /*this.route.params.subscribe((d) => {
+          console.log("params", d);
 
-        },
-        validationHandler: context => {
-            var search = new URLSearchParams();
-            search.set('token', 'code');
-            search.set('response_type', 'code');
-            return this.http.get(this.oauthService.loginUrl, {search});
-        }
-      });
+          this.access_token = this.route.snapshot.params['access_token'];
+
+          console.log("access_token", this.access_token);
+        });*/
+
     }
 
     public login() {
         this.oauthService.initImplicitFlow();
-
-        console.log("sessionStorage", sessionStorage);
     }
 
     public isLoggedIn() {
