@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
         this.oauthService.loginUrl = "https://api.ouraring.com/oauth/authorize";
 
         // URL of the SPA to redirect the user to after login
-        this.oauthService.redirectUri = window.location.origin;
+        this.oauthService.redirectUri = "https://api.ouraring.com/oauth/test-redirect";
 
         // The SPA's id. Register SPA with this id at the auth-server
         this.oauthService.clientId = environment.clientId;
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
 
         // set to true, to receive also an id_token via OpenId Connect (OIDC) in addition to the
         // OAuth2-based access_token
-        this.oauthService.oidc = true;
+        this.oauthService.oidc = false; //put token to 'code' instead of some shit
 
         // Use setStorage to use sessionStorage or another implementation of the TS-type Storage
         // instead of localStorage
@@ -42,7 +42,23 @@ export class AppComponent implements OnInit {
         // This method just tries to parse the token within the url when
         // the auth-server redirects the user back to the web-app
         // It dosn't initiate the login
-        this.oauthService.tryLogin({});
+        //this.oauthService.tryLogin({});
+
+        this.oauthService.tryLogin({
+        onTokenReceived: context => {
+            //
+            // Output just for purpose of demonstration
+            // Don't try this at home ... ;-)
+            //
+            console.debug("logged in");
+            console.debug(context);
+        },
+        validationHandler: context => {
+            var search = new URLSearchParams();
+            search.set('token', 'code');
+            return this.http.get(this.oauthService.loginUrl, {search});
+        }
+    });
     }
 
     public login() {
