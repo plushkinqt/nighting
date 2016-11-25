@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OAuthService} from "angular2-oauth2/oauth-service";
 import {environment} from "../environments/environment";
 import {URLSearchParams, Http} from "@angular/http";
+import {AuthService} from "./services/auth.service";
 
 @Component({
     selector: 'app-root',
@@ -10,10 +11,11 @@ import {URLSearchParams, Http} from "@angular/http";
 })
 
 export class AppComponent implements OnInit {
-    title = 'app works!';
+    title = 'Nighting!';
 
     constructor(private oauthService: OAuthService,
-                private http: Http) {}
+                private http: Http,
+                private authService: AuthService) {}
 
     ngOnInit() {
         // Login-Url
@@ -43,9 +45,15 @@ export class AppComponent implements OnInit {
         // the auth-server redirects the user back to the web-app
         // It dosn't initiate the login
         this.oauthService.tryLogin({});
+
     }
 
     public login() {
         this.oauthService.initImplicitFlow();
+    }
+
+    public isLoggedIn() {
+        // Check if the user is logged in
+        return this.authService.isLoggedIn();
     }
 }

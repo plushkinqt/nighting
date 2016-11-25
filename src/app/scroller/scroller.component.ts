@@ -12,4 +12,12 @@ export class ScrollerComponent implements OnInit {
   ngOnInit() {
   }
 
+  public acceptMatch() {
+    console.log('Match accepted!');
+  }
+
+  public nextMatch() {
+    console.log('Fetching next match...');
+  }
+
 }
