@@ -1,0 +1,5 @@
+<h1>
+  {{title}}
+</h1>
+<button *ngIf="!isLoggedIn()" class="btn btn-secondary" (click)="login()">Login</button>
+<app-scroller *ngIf="isLoggedIn()"></app-scroller>
