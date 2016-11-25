@@ -6,10 +6,12 @@ import { HttpModule } from '@angular/http';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 
 import { AppComponent } from './app.component';
+import { ScrollerComponent } from './scroller/scroller.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ScrollerComponent
   ],
   imports: [
     BrowserModule,
