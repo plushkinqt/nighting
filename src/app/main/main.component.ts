@@ -67,6 +67,13 @@ export class MainComponent implements OnInit {
           this.access_token = d['access_token'];
 
           console.log("access_token", this.access_token);
+
+          if (this.access_token) {
+            this.http.get('https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token).subscribe((res: any) => {
+              console.log(res.json());
+            });
+          }
+
         });
   }
 
