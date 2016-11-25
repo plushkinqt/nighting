@@ -1,7 +1,7 @@
 import { environment } from "../../environments/environment";
 
 import { Component, OnInit } from '@angular/core';
-import { URLSearchParams, Http } from "@angular/http";
+import { URLSearchParams, Headers, Http, Response, RequestOptions } from "@angular/http";
 import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from "../services/auth.service";
@@ -55,21 +55,31 @@ export class MainComponent implements OnInit {
         this.oauthService.tryLogin({
             validationHandler: context => {
                 var search = new URLSearchParams();
-                search.set('token', 'code');
                 search.set('response_type', 'code');
                 return this.http.get(this.oauthService.loginUrl, {search});
             }
         });
 
         this.route.queryParams.subscribe((d) => {
-          console.log("params", d);
-
           this.access_token = d['access_token'];
 
           console.log("access_token", this.access_token);
 
+          let headers = new Headers({
+            'Access-Control-Allow-Origin': 'localhost:4200',
+            'Allow-Origin': 'localhost:4200'
+          });
+
+          /* TODO: fix request!
+            XHRRequest on browser is not allowed AND
+            OPTIONS request is not allowed */
+
+          let options = new RequestOptions({ headers: headers });
+
+          let url = 'https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token;
+
           if (this.access_token) {
-            this.http.get('https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token).subscribe((res: any) => {
+            this.http.get(url, options).subscribe((res: Response) => {
               console.log(res.json());
             });
           }
