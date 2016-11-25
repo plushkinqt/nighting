@@ -6,7 +6,5 @@
 export const environment = {
   production: false,
 
-  clientId: "KLDWEQPSBHAPSBVZ",
-
-  clientSecret: "3NMVITI6O6JFVFEBGAJIU7N6TTSGNLSZ"
+  clientId: "KLDWEQPSBHAPSBVZ"
 };
