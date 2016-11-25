@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
         this.oauthService.loginUrl = "https://api.ouraring.com/oauth/authorize";
 
         // URL of the SPA to redirect the user to after login
-        this.oauthService.redirectUri = "https://api.ouraring.com/oauth/test-redirect";
+        this.oauthService.redirectUri = "http://localhost:4200";
 
         // The SPA's id. Register SPA with this id at the auth-server
         this.oauthService.clientId = environment.clientId;
@@ -50,12 +50,16 @@ export class AppComponent implements OnInit {
             // Output just for purpose of demonstration
             // Don't try this at home ... ;-)
             //
-            console.debug("logged in");
-            console.debug(context);
+            console.log("logged in");
+            console.log(context);
+
+            console.log("sessionStorage", sessionStorage);
+
         },
         validationHandler: context => {
             var search = new URLSearchParams();
             search.set('token', 'code');
+            search.set('response_type', 'code');
             return this.http.get(this.oauthService.loginUrl, {search});
         }
     });
@@ -63,5 +67,7 @@ export class AppComponent implements OnInit {
 
     public login() {
         this.oauthService.initImplicitFlow();
+
+        console.log("sessionStorage", sessionStorage);
     }
 }
