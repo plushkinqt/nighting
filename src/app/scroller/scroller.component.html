@@ -33,10 +33,10 @@
     </div>
   </div>
 
-  <div class="sleep-contributors">Sleep contributors</div>
+  <div class="sleep-contributors">Sleep contributors<br>average of last 10 nights</div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
+    <div class="left-side col-xs-12 col-sm-4">
       <div class="stat-elem background">{{matchObject?.user1?.avgAwake}}</div>
       <div class="stat-elem">{{matchObject?.user1?.rem}}</div>
       <div class="stat-elem background">{{matchObject?.user1?.deep}}</div>
@@ -44,14 +44,14 @@
       <div class="stat-elem background">{{matchObject?.user1?.duration}}</div>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <div class="stat-elem background">Awake</div>
-      <div class="stat-elem">REM</div>
-      <div class="stat-elem background">deep</div>
-      <div class="stat-elem">light</div>
-      <div class="stat-elem background">duration</div>
+      <div class="stat-elem background">Awake (sec)</div>
+      <div class="stat-elem">REM Sleep (sec)</div>
+      <div class="stat-elem background">Deep Sleep (sec)</div>
+      <div class="stat-elem">Light Sleep (sec)</div>
+      <div class="stat-elem background">Duration (sec)</div>
 
     </div>
-    <div>
+    <div class="right-side">
       <div class="stat-elem background">{{matchObject?.user2?.avgAwake}}</div>
       <div class="stat-elem">{{matchObject?.user2?.rem}}</div>
       <div class="stat-elem background">{{matchObject?.user2?.deep}}</div>
@@ -61,7 +61,7 @@
   </div>
 
   <div class="button-area">
-    <button class="btn btn-success" (click)="acceptMatch()">Hang out</button>
+    <button class="btn btn-success emphasize-bg" (click)="acceptMatch()">Hang out</button>
     <button class="btn btn-secondary" (click)="nextMatch()">Next</button>
   </div>
 

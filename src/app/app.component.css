@@ -1,0 +1,17 @@
+.main-container {
+  background: #2a2931;
+  height: 100vh;
+  color: white;
+}
+
+:host /deep/ {
+  .main-bg {
+    background: #2a2931;
+  }
+  .emphasize-color {
+    color: #ff750f;
+  }
+  .emphasize-bg {
+    background: #ff750f;
+  }
+}

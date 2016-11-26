@@ -20,9 +20,28 @@
 }
 
 .background {
-  background-color: #f4f4f3;
+  background-color: #312E3C;
+}
+
+.left-side {
+  color: #ff0357;
+  font-weight: bold;
+}
+
+.right-side {
+  color: #c54cf2;
+  font-weight: bold;
 }
 
 .button-area {
   padding: 1em 0;
+}
+
+.emphasize-bg {
+  background: #ff750f;
+  border-color: #ff750f;
+}
+
+.emphasize-bg:hover {
+  background: #ff882f;
 }

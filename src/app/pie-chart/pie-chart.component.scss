@@ -19,7 +19,7 @@ $size: 200px;
     width: $size;
     height: $size;
     border-radius: 50%;
-    background-color: #E5E5E5;
+    background-color: #2a2931;
     position: relative;
 
     -webkit-transition: all 0.3s ease-out;
@@ -27,7 +27,7 @@ $size: 200px;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 &.gt-50 {
-     background-color: #81CE97;
+     background-color: #ff750f;
  }
 }
 .ppc-progress {
@@ -36,7 +36,7 @@ $size: 200px;
 .ppc-progress-fill {
 @include circle($size);
     clip: rect(0, #{$size/2}, $size, 0);
-    background: #81CE97;
+    background: #ff750f;
     transform: rotate(60deg);
 }
   .gt-50 & {
@@ -50,14 +50,14 @@ $size: 200px;
 
 .ppc-percents {
 @include circle(#{$size/1.15});
-    background: #fff;
+    background: #2a2931;
     text-align: center;
     display: table;
 span {
     display: block;
     font-size: 5em;
     font-weight: bold;
-    color: #81CE97;
+    color: #ff750f;
 }
 }
 .pcc-percents-wrapper {
@@ -69,7 +69,7 @@ span {
 
 body {
     font-family: Arial;
-    background: #f7f7f7;
+    background: #2a2931;
 }
 .progress-pie-chart {
     margin: 0 auto;
