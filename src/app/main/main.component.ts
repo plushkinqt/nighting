@@ -83,19 +83,20 @@ export class MainComponent implements OnInit {
           let url = 'https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token;
 
           if (this.access_token) {
-              let headers = new Headers({
+            console.log(this.access_token);
+              /*let headers = new Headers({
                   'Authorization' : 'Bearer ' + this.access_token
               });
               let options = new RequestOptions({ headers: headers });
 
-            this.http.get('https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token, options)
+              this.http.get('https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token, options)
                 .map((res) => {
                     let data = res.json();
                     return data;
                 })
                 .subscribe((data: any) => {
                     console.log(data);
-                });
+                });*/
           }
 
         });
