@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2';
-import { FirebaseAuth } from 'angularfire2';
+
+import { AngularFire, FirebaseAuth } from 'angularfire2';
 
 @Injectable()
 export class AuthService {
@@ -8,11 +8,14 @@ export class AuthService {
   private uid: string;
 
   constructor(private af: AngularFire,
-              public auth: FirebaseAuth) {
+              public auth: FirebaseAuth,
+              private router: Router) {
     this.auth.subscribe((state) => {
       console.log("subscribed to auth", state);
       if (state != null)
         this.uid = state.uid;
+      else
+        this.uid = null;
     })
   }
 
