@@ -6,13 +6,13 @@
       <p>avg sleep</p>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <app-pie-chart [percents]="userData?.userinfo.avgSleepPercentage"></app-pie-chart>
+      <app-pie-chart [percents]="matchpercent"></app-pie-chart>
     </div>
     <div class="col-xs-12 col-sm-4">
       <p>
-        {{matchName}}
+        {{matchedUser?.userinfo.name}}
       </p>
-      <!-- <p>{{match.avgSleepPercent}} %</p> -->
+      <p>{{matchedUser?.userinfo.avgSleepPercentage}} %</p>
       <p>avg sleep</p>
     </div>
   </div>

@@ -27,6 +27,8 @@ export class ScrollerComponent implements OnInit {
   private allUsersObs: FirebaseListObservable<any>;
   private allUsers: any;
 
+  private matchedUser: any;
+
   @Input() access_token;
 
   constructor(private af: AngularFire, private match: MatchService, private auth: AuthService) { }
@@ -66,7 +68,9 @@ export class ScrollerComponent implements OnInit {
 
       this.matchpercent = null;
 
-      this.matchpercent = this.match.getMatch(this.userData, matchUser);
+      this.matchpercent = Math.floor(this.match.getMatch(this.userData, matchUser));
+
+      this.matchedUser = matchUser;
 
     }
   }
