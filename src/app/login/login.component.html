@@ -1,9 +1,11 @@
 <div class="col-xs-12 col-sm-6 offset-sm-3 text-xs-center pt-1 pb-3">
   <h3>Log in</h3>
-  <!-- <label for="txtLoginUsername">Username: </label> -->
-  <input id="txtLoginUsername" #emailRef class="form-control" type="text" placeholder="Username">
-  <!-- <label for="txtLoginPassword">Password: </label> -->
+
+  <input id="txtLoginUsername" #emailRef class="form-control" type="text"
+    placeholder="Username" (keyup.enter)="login(emailRef.value, passRef.value)">
+
   <input id="txtLoginPassword" #passRef class="form-control mt-1" type="password"
-         placeholder="Password">
+    placeholder="Password" (keyup.enter)="login(emailRef.value, passRef.value)">
+
   <button class="btn btn-primary mt-1" (click)="login(emailRef.value, passRef.value)">Login</button>
 </div>
