@@ -4,5 +4,6 @@
 
 <button *ngIf="isLoggedIn()" class="btn btn-secondary" (click)="logout()">Logout</button>
 
-<app-login *ngIf="isLoggedIn"></app-login>
+<app-login *ngIf="!isLoggedIn()"></app-login>
+
 <app-scroller [access_token]="access_token" *ngIf="isLoggedIn()"></app-scroller>

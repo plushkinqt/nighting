@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 
+import { AuthService } from '../services/auth.service';
 import { MatchService } from '../services/match.service';
 
 @Component({
@@ -18,6 +19,8 @@ export class ScrollerComponent implements OnInit {
 
   private matchpercent: number;
 
+  private uid: string;
+
   private userDataObs: FirebaseObjectObservable<any>;
   private userData: any;
 
@@ -26,19 +29,22 @@ export class ScrollerComponent implements OnInit {
 
   @Input() access_token;
 
-  constructor(private af: AngularFire, private match: MatchService) { }
+  constructor(private af: AngularFire, private match: MatchService, private auth: AuthService) { }
 
   ngOnInit() {
     this.loading = true;
 
-    let uid = 'asdf'; // update with my actual uid
+    this.uid = this.auth.getUid();
 
     this.allUsersObs = this.af.database.list('users');
 
-    this.userDataObs = this.af.database.object(`users/${uid}`);
+    this.userDataObs = this.af.database.object(`users/${this.uid}`);
 
-    this.allUsersObs.subscribe((d) => {
+    this.allUsersObs
+      .subscribe((d) => {
+
       this.allUsers = d;
+      console.log("allUsers", this.allUsers);
       this.loading = false;
       this.currentIndex = 0;
 

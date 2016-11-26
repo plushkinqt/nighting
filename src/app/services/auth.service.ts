@@ -5,19 +5,30 @@ import { FirebaseAuth } from 'angularfire2';
 @Injectable()
 export class AuthService {
 
-    constructor(private af: AngularFire,
-                public auth: FirebaseAuth) {
-    }
+  private uid: string;
 
-    public login(email: string, password: string) {
-        this.auth.login({ email: email, password: password });
-    }
+  constructor(private af: AngularFire,
+              public auth: FirebaseAuth) {
+    this.auth.subscribe((state) => {
+      console.log("subscribed to auth", state);
+      if (state != null)
+        this.uid = state.uid;
+    })
+  }
 
-    public logout() {
-        this.auth.logout();
-    }
+  public login(email: string, password: string) {
+    this.auth.login({ email: email, password: password });
+  }
 
-    public isLoggedIn() {
-        return !!this.auth.getAuth();
-    }
+  public logout() {
+    this.auth.logout();
+  }
+
+  public getUid() {
+    return this.uid;
+  }
+
+  public isLoggedIn() {
+    return !!this.getUid();
+  }
 }
