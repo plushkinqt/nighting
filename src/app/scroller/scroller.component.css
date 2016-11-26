@@ -9,8 +9,8 @@
   font-size: 3em;
 }
 
-.match-text {
-  font-size: 2rem;
+.match {
+  height: 70px;
 }
 
 .stat-elem {

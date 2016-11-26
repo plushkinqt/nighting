@@ -17,15 +17,21 @@
   </div>
 
   <div class="row mt-3">
-    <p class="match-text animated bounce" *ngIf="matchpercent > 70">
-      Match!
-    </p>
-    <p *ngIf="matchpercent < 71">
-      Close enough?
-    </p>
-    <p *ngIf="!matchpercent">
-      Calculating your match...
-    </p>
+    <div class="match">
+      <div *ngIf="matchpercent">
+        <p class="animated bounce" style="font-size: 2em" *ngIf="matchpercent > 70">
+          Match!
+        </p>
+        <p *ngIf="matchpercent < 71">
+          Close enough?
+        </p>
+      </div>
+
+      <p *ngIf="!matchpercent">
+        Calculating your match...
+      </p>
+    </div>
+
     <button class="btn btn-success" (click)="acceptMatch()">Hang out</button>
     <button class="btn btn-secondary" (click)="nextMatch()">Next</button>
   </div>
