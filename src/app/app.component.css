@@ -4,6 +4,7 @@
   color: white;
 }
 
+/* For some reason these are not working */
 :host /deep/ {
   .main-bg {
     background: #2a2931;
