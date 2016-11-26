@@ -12,3 +12,13 @@
 .match-text {
   font-size: 2rem;
 }
+
+.stat-elem {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: x-large;
+}
+
+.background {
+  background-color: #f4f4f3;
+}
