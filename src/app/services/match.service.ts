@@ -9,6 +9,8 @@ export class MatchService {
     console.log(userData1, userData2);
 
     let sleepTotals = 0;
+    let agvScore1 = 0;
+    let agvScore2 = 0;
 
     userData1.sleep.forEach((sleep, index) => {
       let diffpercent = this.compare(sleep.duration, userData2.sleep[index].duration);
@@ -17,9 +19,19 @@ export class MatchService {
       let scorepercent = this.compare(sleep.score, userData2.sleep[index].score);
 
       sleepTotals += (diffpercent + awakepercent + effpercent + scorepercent) / 4;
+
+      agvScore1 += sleep.score;
+      agvScore2 += userData2.sleep[index].score;
     });
 
-    return sleepTotals/(userData1.sleep.length) * 100;
+    agvScore1 = agvScore1/(userData1.sleep.length);
+    agvScore2 = agvScore2/(userData2.sleep.length);
+
+    return {
+      "agvScore1": agvScore1,
+      "agvScore2": agvScore2,
+      "match": sleepTotals/(userData1.sleep.length) * 100
+    };
   }
 
   compare(value1, value2) {

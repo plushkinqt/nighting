@@ -19,6 +19,8 @@ export class ScrollerComponent implements OnInit {
 
   private matchpercent: number;
 
+  private matchObject: any;
+
   private uid: string;
 
   private userDataObs: FirebaseObjectObservable<any>;
@@ -66,7 +68,9 @@ export class ScrollerComponent implements OnInit {
 
       this.matchpercent = null;
 
-      this.matchpercent = this.match.getMatch(this.userData, matchUser);
+      this.matchObject = this.match.getMatch(this.userData, matchUser);
+
+      this.matchpercent = this.matchObject.match;
 
     }
   }
