@@ -7,6 +7,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private isLoginError = false;
 
   @Input() title: string;
 
@@ -17,6 +18,10 @@ export class LoginComponent implements OnInit {
   }
 
   public login(email: string, password: string) {
-    this.authService.login(email, password);
+    this.authService.login(email, password)
+        .catch((err) => {
+          this.isLoginError = true;
+          console.error(err);
+        });
   }
 }
