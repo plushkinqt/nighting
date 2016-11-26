@@ -3,7 +3,7 @@
 </h1>
 <h5 class="text-xs-center">Hang out with people with similar habbits.</h5>
 
-<button *ngIf="isLoggedIn()" class="btn btn-secondary" (click)="logout()">Logout</button>
+<button *ngIf="isLoggedIn()" class="btn btn-secondary btn-cancel" (click)="logout()">Logout</button>
 
 <app-login *ngIf="!isLoggedIn()"></app-login>
 
