@@ -17,6 +17,7 @@ import { MatchService } from './services/match.service';
 import { OuraAPIManager } from './services/oura-apimanager.service';
 
 import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
 
@@ -35,7 +36,8 @@ const FIREBASE_CONFIG: FirebaseAppConfig = environment.firebase;
     AppComponent,
     ScrollerComponent,
     NotfoundComponent,
-    MainComponent
+    MainComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
