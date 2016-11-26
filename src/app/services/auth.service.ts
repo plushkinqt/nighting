@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   public login(email: string, password: string) {
-    this.auth.login({ email: email, password: password });
+    return this.auth.login({ email: email, password: password });
   }
 
   public logout() {
