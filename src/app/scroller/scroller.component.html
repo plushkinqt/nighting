@@ -1,12 +1,30 @@
-<div>
-  <img src="https://placehold.it/690x420.png" alt="Placeholder">
-  <p *ngIf="matchpercent">
-    Match: {{matchpercent}}
-  </p>
-  <p *ngIf="!matchpercent">
-    Calculating your match...
-  </p>
-  <app-pie-chart [percents]="currentIndex"></app-pie-chart>
-  <button class="btn btn-success" (click)="acceptMatch()">Let's sleep!</button>
-  <button class="btn btn-secondary" [disabled]="currentIndex >= allUsers?.length -1" (click)="nextMatch()">Next</button>
+<div id="main-section">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <p>{{userData?.userinfo.name}}</p>
+      <p>{{userData?.userinfo.avgSleepPercentage}} %</p>
+      <p>avg sleep</p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <app-pie-chart [percents]="userData?.userinfo.avgSleepPercentage"></app-pie-chart>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <p>
+        {{matchName}}
+      </p>
+      <!-- <p>{{match.avgSleepPercent}} %</p> -->
+      <p>avg sleep</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <p *ngIf="matchpercent">
+      Match: {{matchpercent}}
+    </p>
+    <p *ngIf="!matchpercent">
+      Calculating your match...
+    </p>
+    <button class="btn btn-success" (click)="acceptMatch()">Let's sleep!</button>
+    <button class="btn btn-secondary" [disabled]="currentIndex >= allUsers?.length -1" (click)="nextMatch()">Next</button>
+  </div>
 </div>
