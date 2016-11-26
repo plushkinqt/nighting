@@ -1,17 +1,15 @@
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
 import { environment } from "../../environments/environment";
 
 import { Component, OnInit } from '@angular/core';
-<<<<<<< Updated upstream
-import { URLSearchParams, Headers, Http, Response, RequestOptions } from "@angular/http";
-=======
-import {URLSearchParams, Http, RequestOptions, Headers} from "@angular/http";
->>>>>>> Stashed changes
 import { ActivatedRoute } from '@angular/router';
+import { URLSearchParams, Headers, Http, Response, RequestOptions } from "@angular/http";
 
 import { AuthService } from "../services/auth.service";
 import { OAuthService } from "angular2-oauth2/oauth-service";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+
 
 @Component({
   selector: 'app-main',
