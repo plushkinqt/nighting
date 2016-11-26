@@ -27,4 +27,24 @@
     <button class="btn btn-success" (click)="acceptMatch()">Let's sleep!</button>
     <button class="btn btn-secondary" (click)="nextMatch()">Next</button>
   </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div>{{matchObject?.user1?.avgAwake}}</div>
+      <div>{{matchObject?.user1?.rem}}</div>
+      <div>{{matchObject?.user1?.deep}}</div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div>Awake</div>
+      <div>REM</div>
+      <div>deep</div>
+
+      <!-- <div>Disturbances</div>
+      <div>Difference</div> -->
+    </div>
+    <div>
+      <div>{{matchObject?.user2?.avgAwake}}</div>
+      <div>{{matchObject?.user2?.rem}}</div>
+      <div>{{matchObject?.user2?.deep}}</div>
+    </div>
+  </div>
 </div>
