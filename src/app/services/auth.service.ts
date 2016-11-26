@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
+import { AngularFire } from 'angularfire2';
+import { FirebaseAuth } from 'angularfire2';
 
 @Injectable()
 export class AuthService {
 
-  constructor() {
-  }
+    constructor(private af: AngularFire,
+                public auth: FirebaseAuth) {
+    }
 
-  public isLoggedIn () {
-    let token = sessionStorage.getItem('nighting-user-token');
+    public login(email: string, password: string) {
+        this.af.auth.login({ email: email, password: password });
+    }
 
-    return token && token.length > 0 ? true : false;
-  }
+    public logout() {
+        this.af.auth.logout();
+    }
 
+    public isLoggedIn() {
+        return !!this.auth.getAuth();
+    }
 }
