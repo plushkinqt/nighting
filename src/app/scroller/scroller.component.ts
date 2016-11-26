@@ -49,13 +49,11 @@ export class ScrollerComponent implements OnInit {
       this.allUsers = d.filter((d) => d.$key != this.uid);
 
       this.loading = false;
-      this.currentIndex = 0;
 
       this.findMatchPercent();
     });
 
     this.userDataObs.subscribe((d) => {
-      this.currentIndex = 0;
       this.loading = false;
       this.userData = d;
 
@@ -71,6 +69,8 @@ export class ScrollerComponent implements OnInit {
       this.matchpercent = null;
 
       this.matchObject = this.match.getMatch(this.userData, matchUser);
+
+      console.log(this.matchObject);
 
       this.matchpercent = Math.floor(this.matchObject.match);
 

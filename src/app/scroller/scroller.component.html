@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <p>{{userData?.userinfo.name}}</p>
-      <p>{{userData?.userinfo.avgSleepPercentage}} %</p>
+      <p>{{matchObject?.avgscore1 || 0}} %</p>
       <p>avg sleep</p>
     </div>
     <div class="col-xs-12 col-sm-4">
@@ -12,7 +12,7 @@
       <p>
         {{matchedUser?.userinfo.name}}
       </p>
-      <p>{{matchedUser?.userinfo.avgSleepPercentage}} %</p>
+      <p>{{matchObject?.agvScore2 || 0}} %</p>
       <p>avg sleep</p>
     </div>
   </div>
