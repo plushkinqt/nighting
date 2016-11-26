@@ -5,6 +5,7 @@ import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'a
 
 import { AuthService } from '../services/auth.service';
 import { MatchService } from '../services/match.service';
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-scroller',
@@ -18,7 +19,8 @@ export class ScrollerComponent implements OnInit {
 
   private currentIndex: number = 0;
 
-  private matchpercent: number;
+  private matchpercent: number = 0;
+  private matchpercentObs = new Subject<number>();
 
   private matchObject: any;
 
@@ -70,13 +72,14 @@ export class ScrollerComponent implements OnInit {
     if (!this.calculating && this.allUsers && this.userData) {
       let matchUser = this.allUsers[this.currentIndex];
 
-      this.matchpercent = null;
+      this.matchpercent = 0;
 
       this.matchObject = this.match.getMatch(this.userData, matchUser);
 
       console.log(this.matchObject);
 
       this.matchpercent = Math.floor(this.matchObject.match);
+      this.matchpercentObs.next(this.matchpercent);
 
       this.matchedUser = matchUser;
     }
