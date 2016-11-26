@@ -107,4 +107,6 @@ export class ScrollerComponent implements OnInit {
     }
   }
 
+  public
+
 }
