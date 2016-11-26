@@ -3,8 +3,6 @@
     src: url(../../assets/fonts/keep_calm/KeepCalm.ttf);
 }
 
-@import 'src/styles/layout';
-
 .logout {
   height: 100vh;
   width: 100vw;
