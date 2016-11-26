@@ -55,9 +55,6 @@ export class MainComponent implements OnInit {
         // This method just tries to parse the token within the url when
         // the auth-server redirects the user back to the web-app
         // It dosn't initiate the login
-
-        //this.oauthService.tryLogin({});
-
         this.oauthService.tryLogin({
             validationHandler: context => {
                 var search = new URLSearchParams();
