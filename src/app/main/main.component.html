@@ -1,10 +1,10 @@
-<h1 class="text-xs-center ma-0 pa-1">
+<h1 *ngIf="isLoggedIn()" class="text-xs-center ma-0 pa-1">
   {{title}}
 </h1>
 <!--<h5 class="text-xs-center">Hang out with people with similar habbits</h5>-->
 
 <button *ngIf="isLoggedIn()" class="btn btn-secondary btn-cancel" (click)="logout()">Logout</button>
 
-<app-login *ngIf="!isLoggedIn()"></app-login>
+<app-login [title]="title" *ngIf="!isLoggedIn()"></app-login>
 
 <app-scroller [access_token]="access_token" *ngIf="isLoggedIn()"></app-scroller>

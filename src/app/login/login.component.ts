@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../services/auth.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +8,8 @@ import {AuthService} from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   private isLoginError = false;
+
+  @Input() title: string;
 
   constructor(private authService: AuthService) {
   }
