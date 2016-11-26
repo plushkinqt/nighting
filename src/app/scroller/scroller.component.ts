@@ -72,7 +72,7 @@ export class ScrollerComponent implements OnInit {
 
       this.matchObject = this.match.getMatch(this.userData, matchUser);
 
-      this.matchpercent = this.matchObject.match;
+      this.matchpercent = Math.floor(this.matchObject.match);
 
       this.matchedUser = matchUser;
     }
