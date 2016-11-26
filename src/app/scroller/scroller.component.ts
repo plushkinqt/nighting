@@ -68,15 +68,6 @@ export class ScrollerComponent implements OnInit {
 
       this.matchpercent = this.match.getMatch(this.userData, matchUser);
 
-      if (this.matchpercent == -1) {
-        if (this.allUsers[this.currentIndex + 1]) {
-          this.currentIndex++;
-        } else this.currentIndex--;
-
-        matchUser = this.allUsers[this.currentIndex];
-
-        this.matchpercent = this.match.getMatch(this.userData, matchUser);
-      }
     }
   }
 
