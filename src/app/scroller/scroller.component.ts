@@ -92,6 +92,10 @@ export class ScrollerComponent implements OnInit {
     else {
       console.log("could not get another match!");
     }
+
+    if (this.currentIndex >= this.allUsers.length -1) {
+      this.currentIndex = 0;
+    }
   }
 
 }
