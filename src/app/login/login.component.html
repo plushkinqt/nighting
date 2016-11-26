@@ -2,10 +2,22 @@
   <h3>Log in</h3>
 
   <input id="txtLoginUsername" #emailRef class="form-control" type="text"
-    placeholder="Username" (keyup.enter)="login(emailRef.value, passRef.value)">
+         placeholder="Username" (keyup.enter)="login(emailRef.value, passRef.value)" required
+         [ngClass]="{'error': isLoginError}">
+  <div class="error-label" *ngIf="isLoginError"
+       [ngClass]="{'error': isLoginError}">
+    this field is required
+  </div>
 
-  <input id="txtLoginPassword" #passRef class="form-control mt-1" type="password"
-    placeholder="Password" (keyup.enter)="login(emailRef.value, passRef.value)">
+  <input id="txtLoginPassword" #passRef class="form-control mt-1" type="password" required
+         placeholder="Password" (keyup.enter)="login(emailRef.value, passRef.value)"
+         [ngClass]="{'error': isLoginError}">
+  <div class="error-label" *ngIf="isLoginError"
+       [ngClass]="{'error': isLoginError}">
+    this field is required
+  </div>
 
-  <button class="btn btn-INFO mt-1" (click)="login(emailRef.value, passRef.value)">Login</button>
+  <button class="btn btn-INFO mt-1" (click)="login(emailRef.value, passRef.value)">
+    Login
+  </button>
 </div>
