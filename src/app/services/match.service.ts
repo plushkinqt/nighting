@@ -8,7 +8,7 @@ export class MatchService {
   getMatch(userData1: any, userData2: any) {
     let sleepTotals = 0;
     let user1 = {
-      agvScore: 0,
+      avgScore: 0,
       avgAwake: 0,
       rem: 0,
       deep: 0,
@@ -16,7 +16,7 @@ export class MatchService {
       duration: 0
     };
     let user2 = {
-      agvScore: 0,
+      avgScore: 0,
       avgAwake: 0,
       rem: 0,
       deep: 0,
@@ -32,37 +32,37 @@ export class MatchService {
 
       sleepTotals += (diffpercent + awakepercent + effpercent + scorepercent) / 4;
 
-      user1.agvScore += sleep.score;
-      user2.agvScore += userData2.sleep[index].score;
+      user1.avgScore += parseInt(sleep.score || 0);
+      user2.avgScore += parseInt(userData2.sleep[index].score || 0);
 
-      user1.avgAwake += sleep.awake;
+      user1.avgAwake += parseInt(sleep.awake || 0);
       if (userData2.sleep[index].awake) {
-        user2.avgAwake += userData2.sleep[index].awake;
+        user2.avgAwake += parseInt(userData2.sleep[index].awake || 0);
       }
 
-      user1.rem += sleep.rem;
+      user1.rem += parseInt(sleep.rem || 0);
       if (userData2.sleep[index].rem) {
-        user2.rem += userData2.sleep[index].rem;
+        user2.rem += parseInt(userData2.sleep[index].rem || 0);
       }
 
-      user1.deep += sleep.deep;
+      user1.deep += parseInt(sleep.deep || 0);
       if (userData2.sleep[index].deep) {
-        user2.deep += userData2.sleep[index].deep;
+        user2.deep += parseInt(userData2.sleep[index].deep || 0);
       }
 
-      user1.light += sleep.light;
+      user1.light += parseInt(sleep.light || 0);
       if (userData2.sleep[index].light) {
-        user2.light += userData2.sleep[index].light;
+        user2.light += parseInt(userData2.sleep[index].light || 0);
       }
 
-      user1.duration += sleep.duration;
+      user1.duration += parseInt(sleep.duration || 0);
       if (userData2.sleep[index].duration) {
-        user2.duration += userData2.sleep[index].duration;
+        user2.duration += parseInt(userData2.sleep[index].duration || 0);
       }
     });
 
-    user1.agvScore = user1.agvScore / (userData1.sleep.length);
-    user2.agvScore = user2.agvScore / (userData2.sleep.length);
+    user1.avgScore = user1.avgScore / (userData1.sleep.length);
+    user2.avgScore = user2.avgScore / (userData2.sleep.length);
 
     user1.avgAwake = user1.avgAwake / userData1.sleep.length;
     user2.avgAwake = user2.avgAwake / userData2.sleep.length;
