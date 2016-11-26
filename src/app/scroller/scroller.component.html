@@ -35,7 +35,7 @@
 
   <div class="sleep-contributors">Sleep contributors</div>
 
-  <div class="row">
+  <div *ngIf="matchObject" class="row">
     <div class="left-side col-xs-12 col-sm-4">
       <div class="stat-elem background">{{matchObject?.user1?.avgAwake | formatSeconds}}</div>
       <div class="stat-elem">{{matchObject?.user1?.rem | formatSeconds}}</div>
@@ -60,9 +60,13 @@
     </div>
   </div>
 
+  <div *ngIf="!matchObject">
+    ...
+  </div>
+
   <div class="button-area">
-    <button class="btn btn-success emphasize-bg" (click)="acceptMatch()">Hang out</button>
-    <button class="btn btn-secondary btn-cancel" (click)="nextMatch()">Next</button>
+    <button class="btn btn-success emphasize-bg" [disabled]="!matchObject" (click)="acceptMatch()">Hang out</button>
+    <button class="btn btn-secondary btn-cancel" [disabled]="!matchObject" (click)="nextMatch()">Next</button>
   </div>
 
 </div>
