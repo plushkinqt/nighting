@@ -22,9 +22,11 @@ import { OuraAPIManager } from './services/oura-apimanager.service';
 
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { LogoutComponent } from './logout/logout.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { LetsSleepComponent } from './letssleep/letssleep.component';
+
+import { FormatSeconds } from './format-seconds.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent, children: [
@@ -51,7 +53,8 @@ const FIREBASE_AUTH_CONFIG = {
     LoginComponent,
     PieChartComponent,
     LogoutComponent,
-    LetsSleepComponent
+    LetsSleepComponent,
+    FormatSeconds
   ],
   imports: [
     BrowserModule,

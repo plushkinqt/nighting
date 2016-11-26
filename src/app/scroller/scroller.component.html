@@ -37,26 +37,26 @@
 
   <div class="row">
     <div class="left-side col-xs-12 col-sm-4">
-      <div class="stat-elem background">{{matchObject?.user1?.avgAwake}}</div>
-      <div class="stat-elem">{{matchObject?.user1?.rem}}</div>
-      <div class="stat-elem background">{{matchObject?.user1?.deep}}</div>
-      <div class="stat-elem">{{matchObject?.user1?.light}}</div>
-      <div class="stat-elem background">{{matchObject?.user1?.duration}}</div>
+      <div class="stat-elem background">{{matchObject?.user1?.avgAwake | formatSeconds}}</div>
+      <div class="stat-elem">{{matchObject?.user1?.rem | formatSeconds}}</div>
+      <div class="stat-elem background">{{matchObject?.user1?.deep | formatSeconds}}</div>
+      <div class="stat-elem">{{matchObject?.user1?.light | formatSeconds}}</div>
+      <div class="stat-elem background">{{matchObject?.user1?.duration | formatSeconds}}</div>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <div class="stat-elem background">Awake (sec)</div>
-      <div class="stat-elem">REM Sleep (sec)</div>
-      <div class="stat-elem background">Deep Sleep (sec)</div>
-      <div class="stat-elem">Light Sleep (sec)</div>
-      <div class="stat-elem background">Duration (sec)</div>
+      <div class="stat-elem background">Awake</div>
+      <div class="stat-elem">REM Sleep</div>
+      <div class="stat-elem background">Deep Sleep</div>
+      <div class="stat-elem">Light Sleep</div>
+      <div class="stat-elem background">Duration</div>
 
     </div>
     <div class="right-side">
-      <div class="stat-elem background">{{matchObject?.user2?.avgAwake}}</div>
-      <div class="stat-elem">{{matchObject?.user2?.rem}}</div>
-      <div class="stat-elem background">{{matchObject?.user2?.deep}}</div>
-      <div class="stat-elem">{{matchObject?.user2?.light}}</div>
-      <div class="stat-elem background">{{matchObject?.user2?.duration}}</div>
+      <div class="stat-elem background">{{matchObject?.user2?.avgAwake | formatSeconds}}</div>
+      <div class="stat-elem">{{matchObject?.user2?.rem | formatSeconds}}</div>
+      <div class="stat-elem background">{{matchObject?.user2?.deep | formatSeconds}}</div>
+      <div class="stat-elem">{{matchObject?.user2?.light | formatSeconds}}</div>
+      <div class="stat-elem background">{{matchObject?.user2?.duration | formatSeconds}}</div>
     </div>
   </div>
 
