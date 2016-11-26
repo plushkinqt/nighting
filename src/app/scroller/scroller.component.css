@@ -1,6 +1,9 @@
 #main-section {
-  background-color: #ccc;
   height: 420px;
   text-align: center;
   width: 100%;
+}
+
+.user-percentage-value {
+  font-size: 3em;
 }

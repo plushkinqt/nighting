@@ -1,13 +1,12 @@
 h1 {
-  background-color: #FF3F80;
-  color: #FFF;
   margin: 0;
   padding: 1rem;
-  text-align: center;
+  color: #fff;
 }
 
-div {
-  text-align: right;
+h5 {
+  margin: 0;
+  color: #000;
 }
 
 button {

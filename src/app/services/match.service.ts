@@ -18,8 +18,8 @@ export class MatchService {
 
       sleepTotals += (diffpercent + awakepercent + effpercent + scorepercent) / 4;
 
-      avgscore1 += parseInt(sleep.score | 0);
-      avgscore2 += parseInt(userData2.sleep[index].score | 0);
+      avgscore1 += parseInt(sleep.score || 0);
+      avgscore2 += parseInt(userData2.sleep[index].score || 0);
     });
 
     avgscore1 = avgscore1/(userData1.sleep.length);
