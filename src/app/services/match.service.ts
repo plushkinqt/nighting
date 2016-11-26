@@ -6,8 +6,6 @@ export class MatchService {
   constructor() { }
 
   getMatch(userData1: any, userData2: any) {
-    console.log(userData1, userData2);
-
     let sleepTotals = 0;
     let avgscore1 = 0;
     let avgscore2 = 0;
@@ -20,8 +18,8 @@ export class MatchService {
 
       sleepTotals += (diffpercent + awakepercent + effpercent + scorepercent) / 4;
 
-      avgscore1 += sleep.score;
-      avgscore2 += userData2.sleep[index].score;
+      avgscore1 += parseInt(sleep.score | 0);
+      avgscore2 += parseInt(userData2.sleep[index].score | 0);
     });
 
     avgscore1 = avgscore1/(userData1.sleep.length);
