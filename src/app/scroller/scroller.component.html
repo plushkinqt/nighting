@@ -2,7 +2,7 @@
   <div class="row text-xs-center">
     <div class="col-xs-12 col-sm-4">
       <h3>{{userData?.userinfo.name}}</h3>
-      <p class="user-percentage-value">{{matchObject?.avgscore1 || 0}} %</p>
+      <p class="user-percentage-value">{{matchObject?.user1.avgScore || 0}} %</p>
       <p>avg sleep</p>
     </div>
     <div class="col-xs-12 col-sm-4">
@@ -11,19 +11,46 @@
     <div class="col-xs-12 col-sm-4">
 
       <h3>{{matchedUser?.userinfo.name}}</h3>
-      <p class="user-percentage-value">{{matchObject?.avgscore2 || 0}} %</p>
+      <p class="user-percentage-value">{{matchObject?.user2.avgScore || 0}} %</p>
       <p>avg sleep</p>
     </div>
   </div>
 
-  <div class="row">
-    <p class="match-text" *ngIf="matchpercent">
+  <div class="row mt-3">
+    <p class="match-text animated bounce" *ngIf="matchpercent > 70">
       Match!
+    </p>
+    <p *ngIf="matchpercent < 71">
+      Close enough?
     </p>
     <p *ngIf="!matchpercent">
       Calculating your match...
     </p>
     <button class="btn btn-success" (click)="acceptMatch()">Hang out</button>
     <button class="btn btn-secondary" (click)="nextMatch()">Next</button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="stat-elem background">{{matchObject?.user1?.avgAwake}}</div>
+      <div class="stat-elem">{{matchObject?.user1?.rem}}</div>
+      <div class="stat-elem background">{{matchObject?.user1?.deep}}</div>
+      <div class="stat-elem">{{matchObject?.user1?.light}}</div>
+      <div class="stat-elem background">{{matchObject?.user1?.duration}}</div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="stat-elem background">Awake</div>
+      <div class="stat-elem">REM</div>
+      <div class="stat-elem background">deep</div>
+      <div class="stat-elem">light</div>
+      <div class="stat-elem background">duration</div>
+
+    </div>
+    <div>
+      <div class="stat-elem background">{{matchObject?.user2?.avgAwake}}</div>
+      <div class="stat-elem">{{matchObject?.user2?.rem}}</div>
+      <div class="stat-elem background">{{matchObject?.user2?.deep}}</div>
+      <div class="stat-elem">{{matchObject?.user2?.light}}</div>
+      <div class="stat-elem background">{{matchObject?.user2?.duration}}</div>
+    </div>
   </div>
 </div>

@@ -2,6 +2,7 @@
   height: 420px;
   text-align: center;
   width: 100%;
+  padding: 1em;
 }
 
 .user-percentage-value {
@@ -10,4 +11,14 @@
 
 .match-text {
   font-size: 2rem;
+}
+
+.stat-elem {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: x-large;
+}
+
+.background {
+  background-color: #f4f4f3;
 }
