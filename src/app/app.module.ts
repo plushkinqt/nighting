@@ -4,12 +4,16 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+
 import { OAuthService } from 'angular2-oauth2/oauth-service';
+import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { ScrollerComponent } from './scroller/scroller.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { MainComponent } from './main/main.component';
+
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
 
@@ -21,6 +25,7 @@ const appRoutes: Routes = [
 
 ];
 
+const FIREBASE_CONFIG: FirebaseAppConfig = environment.firebase;
 
 @NgModule({
   declarations: [
@@ -33,7 +38,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   providers: [
       AuthService,
