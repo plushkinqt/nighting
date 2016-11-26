@@ -8,8 +8,7 @@ export class AuthService {
   private uid: string;
 
   constructor(private af: AngularFire,
-              public auth: FirebaseAuth,
-              private router: Router) {
+              public auth: FirebaseAuth) {
     this.auth.subscribe((state) => {
       console.log("subscribed to auth", state);
       if (state != null)
