@@ -42,3 +42,13 @@ button.btn:focus, button.btn:active:focus {color: white; outline: none;}
 }
 
 .btn.btn-cancel:hover { background: rgba(218,73,28,1); }
+
+.main-bg {
+  background: #2a2931;
+}
+.emphasize-color {
+  color: #ff750f;
+}
+.emphasize-bg {
+  background: #ff750f;
+}
