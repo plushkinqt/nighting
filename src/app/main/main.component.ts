@@ -1,11 +1,17 @@
 import { environment } from "../../environments/environment";
 
 import { Component, OnInit } from '@angular/core';
+<<<<<<< Updated upstream
 import { URLSearchParams, Headers, Http, Response, RequestOptions } from "@angular/http";
+=======
+import {URLSearchParams, Http, RequestOptions, Headers} from "@angular/http";
+>>>>>>> Stashed changes
 import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from "../services/auth.service";
 import { OAuthService } from "angular2-oauth2/oauth-service";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'app-main',
@@ -79,9 +85,19 @@ export class MainComponent implements OnInit {
           let url = 'https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token;
 
           if (this.access_token) {
-            this.http.get(url, options).subscribe((res: Response) => {
-              console.log(res.json());
-            });
+              let headers = new Headers({
+                  'Authorization' : 'Bearer ' + this.access_token
+              });
+              let options = new RequestOptions({ headers: headers });
+
+            this.http.get('https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token, options)
+                .map((res) => {
+                    let data = res.json();
+                    return data;
+                })
+                .subscribe((data: any) => {
+                    console.log(data);
+                });
           }
 
         });
