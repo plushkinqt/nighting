@@ -2,7 +2,7 @@
   <div class="row text-xs-center">
     <div class="col-xs-12 col-sm-4">
       <h3>{{userData?.userinfo.name}}</h3>
-      <p class="user-percentage-value">{{userData?.userinfo.avgSleepPercentage}}%</p>
+      <p class="user-percentage-value">{{matchObject?.avgscore1 || 0}} %</p>
       <p>avg sleep</p>
     </div>
     <div class="col-xs-12 col-sm-4">
@@ -10,7 +10,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
       <h3>{{matchedUser?.userinfo.name}}</h3>
-      <p class="user-percentage-value">{{matchedUser?.userinfo.avgSleepPercentage}}%</p>
+      <p class="user-percentage-value">{{matchObject?.agvScore2 || 0}} %</p>
       <p>avg sleep</p>
     </div>
   </div>
@@ -23,6 +23,6 @@
       Calculating your match...
     </p>
     <button class="btn btn-success" (click)="acceptMatch()">Hang out</button>
-    <button class="btn btn-secondary" [disabled]="currentIndex >= allUsers?.length -1" (click)="nextMatch()">Next</button>
+    <button class="btn btn-secondary" (click)="nextMatch()">Next</button>
   </div>
 </div>

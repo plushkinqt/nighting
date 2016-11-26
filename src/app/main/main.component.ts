@@ -67,8 +67,6 @@ export class MainComponent implements OnInit {
     this.route.queryParams.subscribe((d) => {
       this.access_token = d['access_token'];
 
-      console.log("access_token", this.access_token);
-
       let personalInfo = this.api.getPersonalInfo(this.access_token);
 
     });
@@ -76,7 +74,7 @@ export class MainComponent implements OnInit {
 
   public logout() {
     this.authService.logout();
-    this.router.navigate['/'];
+    this.router.navigate(['/logout']);
   }
 
   public login() {

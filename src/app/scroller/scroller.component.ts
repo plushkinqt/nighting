@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 
@@ -33,7 +34,10 @@ export class ScrollerComponent implements OnInit {
 
   @Input() access_token;
 
-  constructor(private af: AngularFire, private match: MatchService, private auth: AuthService) { }
+  constructor(private af: AngularFire,
+            private match: MatchService,
+            private auth: AuthService,
+            private router: Router) { }
 
   ngOnInit() {
     this.loading = true;
@@ -49,13 +53,11 @@ export class ScrollerComponent implements OnInit {
       this.allUsers = d.filter((d) => d.$key != this.uid);
 
       this.loading = false;
-      this.currentIndex = 0;
 
       this.findMatchPercent();
     });
 
     this.userDataObs.subscribe((d) => {
-      this.currentIndex = 0;
       this.loading = false;
       this.userData = d;
 
@@ -72,6 +74,8 @@ export class ScrollerComponent implements OnInit {
 
       this.matchObject = this.match.getMatch(this.userData, matchUser);
 
+      console.log(this.matchObject);
+
       this.matchpercent = Math.floor(this.matchObject.match);
 
       this.matchedUser = matchUser;
@@ -80,6 +84,7 @@ export class ScrollerComponent implements OnInit {
 
   public acceptMatch() {
     console.log('Match accepted!');
+    this.router.navigate(['/letssleep', this.matchedUser.userinfo.name]);
   }
 
   public nextMatch() {
@@ -91,6 +96,10 @@ export class ScrollerComponent implements OnInit {
     }
     else {
       console.log("could not get another match!");
+    }
+
+    if (this.currentIndex >= this.allUsers.length -1) {
+      this.currentIndex = 0;
     }
   }
 
