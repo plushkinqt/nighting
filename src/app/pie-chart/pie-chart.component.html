@@ -1,10 +1,13 @@
-<div class="progress-pie-chart" data-percent="43">
+<div class="progress-pie-chart" #chart
+     attr.data-percent="{{percents}}"
+     [ngClass]="{'gt-50': percents > 50}">
   <div class="ppc-progress">
-    <div class="ppc-progress-fill"></div>
+    <div class="ppc-progress-fill"
+         [style.transform]="rotationRule"></div>
   </div>
   <div class="ppc-percents">
     <div class="pcc-percents-wrapper">
-      <span>{{percents}}%</span>
+      <span>{{ percents }}%</span>
     </div>
   </div>
 </div>
