@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { OAuthService } from 'angular2-oauth2/oauth-service';
-import { AngularFireModule, FirebaseAppConfig, FirebaseAuthConfig } from 'angularfire2';
+import { AngularFireModule, FirebaseAppConfig, firebaseAuthConfig } from 'angularfire2';
 import { AuthProviders, AuthMethods } from 'angularfire2';
 
 import { AppComponent } from './app.component';
@@ -32,8 +32,7 @@ const appRoutes: Routes = [
 
 const FIREBASE_CONFIG: FirebaseAppConfig = environment.firebase;
 const FIREBASE_AUTH_CONFIG = {
-  provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
+  provider: AuthProviders.Password
 };
 
 @NgModule({
