@@ -16,9 +16,12 @@
     </div>
   </div>
 
-  <div class="row">
-    <p class="match-text" *ngIf="matchpercent">
+  <div class="row mt-3">
+    <p class="match-text animated bounce" *ngIf="matchpercent > 70">
       Match!
+    </p>
+    <p *ngIf="matchpercent < 71">
+      Close enough?
     </p>
     <p *ngIf="!matchpercent">
       Calculating your match...
