@@ -11,13 +11,17 @@ export class MatchService {
       agvScore: 0,
       avgAwake: 0,
       rem: 0,
-      deep: 0
+      deep: 0,
+      light: 0,
+      duration: 0
     };
     let user2 = {
       agvScore: 0,
       avgAwake: 0,
       rem: 0,
-      deep: 0
+      deep: 0,
+      light: 0,
+      duration: 0
     };
 
     userData1.sleep.forEach((sleep, index) => {
@@ -45,6 +49,16 @@ export class MatchService {
       if (userData2.sleep[index].deep) {
         user2.deep += userData2.sleep[index].deep;
       }
+
+      user1.light += sleep.light;
+      if (userData2.sleep[index].light) {
+        user2.light += userData2.sleep[index].light;
+      }
+
+      user1.duration += sleep.duration;
+      if (userData2.sleep[index].duration) {
+        user2.duration += userData2.sleep[index].duration;
+      }
     });
 
     user1.agvScore = user1.agvScore / (userData1.sleep.length);
@@ -59,6 +73,11 @@ export class MatchService {
     user1.deep = user1.deep / userData1.sleep.length;
     user2.deep = user2.deep / userData2.sleep.length;
 
+    user1.light = user1.light / userData1.sleep.length;
+    user2.light = user2.light / userData2.sleep.length;
+
+    user1.duration = user1.duration / userData1.sleep.length;
+    user2.duration = user2.duration / userData2.sleep.length;
 
     return {
       'match': (sleepTotals / (userData1.sleep.length) * 100),
