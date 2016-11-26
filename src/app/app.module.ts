@@ -22,6 +22,7 @@ import { OuraAPIManager } from './services/oura-apimanager.service';
 
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 const appRoutes: Routes = [
 
@@ -45,7 +46,8 @@ const FIREBASE_AUTH_CONFIG = {
     ScrollerComponent,
     NotfoundComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,

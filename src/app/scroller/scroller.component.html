@@ -6,6 +6,7 @@
   <p *ngIf="!matchpercent">
     Calculating your match...
   </p>
+  <app-pie-chart [percents]="currentIndex"></app-pie-chart>
   <button class="btn btn-success" (click)="acceptMatch()">Let's sleep!</button>
   <button class="btn btn-secondary" [disabled]="currentIndex >= allUsers?.length -1" (click)="nextMatch()">Next</button>
 </div>
