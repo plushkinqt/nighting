@@ -6,8 +6,6 @@ export class MatchService {
   constructor() { }
 
   getMatch(userData1: any, userData2: any) {
-    console.log(userData1, userData2);
-
     let sleepTotals = 0;
     let user1 = {
       agvScore: 0,

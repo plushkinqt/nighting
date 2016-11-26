@@ -23,15 +23,17 @@ import { OuraAPIManager } from './services/oura-apimanager.service';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { LogoutComponent } from './logout/logout.component';
+import { LetsSleepComponent } from './letssleep/letssleep.component';
 
 const appRoutes: Routes = [
-
   { path: '', component: AppComponent, children: [
     {path: '', component: MainComponent}
   ] },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'letssleep/:name', component: LetsSleepComponent },
   { path: '**', component: NotfoundComponent },
   { path: 'notfound', component: AppComponent },
-
 ];
 
 const FIREBASE_CONFIG: FirebaseAppConfig = environment.firebase;
@@ -47,7 +49,9 @@ const FIREBASE_AUTH_CONFIG = {
     NotfoundComponent,
     MainComponent,
     LoginComponent,
-    PieChartComponent
+    PieChartComponent,
+    LogoutComponent,
+    LetsSleepComponent
   ],
   imports: [
     BrowserModule,
