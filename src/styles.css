@@ -52,3 +52,31 @@ button.btn:focus, button.btn:active:focus {color: white; outline: none;}
 .emphasize-bg {
   background: #ff750f;
 }
+
+input.form-control {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  background: transparent;
+  outline: none;
+  resize: none;
+  border: 0;
+  border-bottom: 2px solid #aeaeae;
+  font-size: 24px;
+  box-shadow: none;
+  border-radius: 0;
+  margin-top: 20px;
+  color: white;
+  height: auto;
+
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+input.form-control:focus {
+  border-bottom: 2px solid white;
+  background: transparent;
+  color: white;
+}
+input.form-control.error { border-bottom: 2px solid #ff7e76; }
