@@ -4,13 +4,13 @@ import { Headers, Http, Response, RequestOptions } from "@angular/http";
 @Injectable()
 export class OuraAPIManager {
 
-  private apiserver = 'https://api.ouraring.com/v1/userinfo?access_token=';
+  private apiserver = 'https://api.ouraring.com/v1/userinfo';
 
   constructor(private http: Http) { }
 
   getPersonalInfo(access_token: string) {
 
-    let url = this.apiserver + access_token;
+    let url = this.apiserver + '?access_token=' + access_token;
 
     if (access_token) {
       console.log(access_token);

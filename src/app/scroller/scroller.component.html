@@ -1,8 +1,11 @@
 <div>
   <img src="https://placehold.it/690x420.png" alt="Placeholder">
-  <p>
-    Match: 69%
+  <p *ngIf="matchpercent">
+    Match: {{matchpercent}}
+  </p>
+  <p *ngIf="!matchpercent">
+    Calculating your match...
   </p>
   <button class="btn btn-success" (click)="acceptMatch()">Let's sleep!</button>
-  <button class="btn btn-secondary" (click)="nextMatch()">Next</button>
+  <button class="btn btn-secondary" [disabled]="currentIndex >= allUsers?.length -1" (click)="nextMatch()">Next</button>
 </div>

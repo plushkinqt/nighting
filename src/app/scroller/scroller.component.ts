@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+
+import { MatchService } from '../services/match.service';
 
 @Component({
   selector: 'app-scroller',
@@ -9,26 +11,64 @@ import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 })
 export class ScrollerComponent implements OnInit {
 
-  private userData: FirebaseObjectObservable<any>;
+  private calculating: boolean = false;
+  private loading: boolean = false;
 
-  private matchUserData: FirebaseObjectObservable<any>;
+  private currentIndex: number = 0;
+
+  private matchpercent: number;
+
+  private userDataObs: FirebaseObjectObservable<any>;
+  private userData: any;
+
+  private allUsersObs: FirebaseListObservable<any>;
+  private allUsers: any;
 
   @Input() access_token;
 
-  constructor(private af: AngularFire) { }
+  constructor(private af: AngularFire, private match: MatchService) { }
 
   ngOnInit() {
-    let uid = 'user1';
+    this.loading = true;
 
-    let matchuid = 'user2';
+    let uid = 'asdf'; // update with my actual uid
 
-    this.userData = this.af.database.object(`users/${uid}`);
+    this.allUsersObs = this.af.database.list('users');
 
-    this.matchUserData = this.af.database.object(`users/${matchuid}`);
+    this.userDataObs = this.af.database.object(`users/${uid}`);
 
-    this.userData.subscribe((d) => console.log("got userData", d));
+    this.allUsersObs.subscribe((d) => {
+      this.allUsers = d;
+      this.loading = false;
+      this.currentIndex = 0;
 
-    this.matchUserData.subscribe((d) => console.log("got matchUserData", d));
+      this.findMatchPercent();
+    });
+
+    this.userDataObs.subscribe((d) => {
+      this.currentIndex = 0;
+      this.loading = false;
+      this.userData = d;
+
+      this.findMatchPercent();
+    });
+
+  }
+
+  private findMatchPercent() {
+    if (!this.calculating && this.allUsers && this.userData) {
+      let matchUser = this.allUsers[this.currentIndex];
+
+      this.matchpercent = null;
+
+      this.matchpercent = this.match.getMatch(this.userData, matchUser);
+
+      if (this.matchpercent == -1) {
+        this.currentIndex++;
+        matchUser = this.allUsers[this.currentIndex];
+        this.matchpercent = this.match.getMatch(this.userData, matchUser);
+      }
+    }
   }
 
   public acceptMatch() {
@@ -37,6 +77,14 @@ export class ScrollerComponent implements OnInit {
 
   public nextMatch() {
     console.log('Fetching next match...');
+    if (this.allUsers && this.allUsers[this.currentIndex + 1]) {
+      this.currentIndex++;
+
+      this.findMatchPercent();
+    }
+    else {
+      console.log("could not get another match!");
+    }
   }
 
 }

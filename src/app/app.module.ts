@@ -13,6 +13,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { MainComponent } from './main/main.component';
 
 import { AuthService } from './services/auth.service';
+import { MatchService } from './services/match.service';
 import { OuraAPIManager } from './services/oura-apimanager.service';
 
 import { environment } from '../environments/environment';
@@ -46,6 +47,7 @@ const FIREBASE_CONFIG: FirebaseAppConfig = environment.firebase;
   providers: [
       AuthService,
       OAuthService,
+      MatchService,
       OuraAPIManager
   ],
   bootstrap: [AppComponent]
