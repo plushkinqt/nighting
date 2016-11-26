@@ -1,18 +1,16 @@
-<div id="main-section">
-  <div class="row">
+<div id="main-section" class="py-3">
+  <div class="row text-xs-center">
     <div class="col-xs-12 col-sm-4">
-      <p>{{userData?.userinfo.name}}</p>
-      <p>{{userData?.userinfo.avgSleepPercentage}} %</p>
+      <h3>{{userData?.userinfo.name}}</h3>
+      <p class="user-percentage-value">{{userData?.userinfo.avgSleepPercentage}}%</p>
       <p>avg sleep</p>
     </div>
     <div class="col-xs-12 col-sm-4">
       <app-pie-chart [percents]="matchpercent"></app-pie-chart>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <p>
-        {{matchedUser?.userinfo.name}}
-      </p>
-      <p>{{matchedUser?.userinfo.avgSleepPercentage}} %</p>
+      <h3>{{matchedUser?.userinfo.name}}</h3>
+      <p class="user-percentage-value">{{matchedUser?.userinfo.avgSleepPercentage}}%</p>
       <p>avg sleep</p>
     </div>
   </div>
@@ -24,7 +22,7 @@
     <p *ngIf="!matchpercent">
       Calculating your match...
     </p>
-    <button class="btn btn-success" (click)="acceptMatch()">Let's sleep!</button>
+    <button class="btn btn-success" (click)="acceptMatch()">Hang out</button>
     <button class="btn btn-secondary" [disabled]="currentIndex >= allUsers?.length -1" (click)="nextMatch()">Next</button>
   </div>
 </div>
