@@ -1,4 +1,3 @@
-import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +11,9 @@ import { AppComponent } from './app.component';
 import { ScrollerComponent } from './scroller/scroller.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { MainComponent } from './main/main.component';
+
+import { AuthService } from './services/auth.service';
+import { OuraAPIManager } from './services/oura-apimanager.service';
 
 import { environment } from '../environments/environment';
 
@@ -43,7 +45,8 @@ const FIREBASE_CONFIG: FirebaseAppConfig = environment.firebase;
   ],
   providers: [
       AuthService,
-      OAuthService
+      OAuthService,
+      OuraAPIManager
   ],
   bootstrap: [AppComponent]
 })

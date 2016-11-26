@@ -5,9 +5,10 @@ import { environment } from "../../environments/environment";
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { URLSearchParams, Headers, Http, Response, RequestOptions } from "@angular/http";
+import { URLSearchParams, Http } from "@angular/http";
 
 import { AuthService } from "../services/auth.service";
+import { OuraAPIManager } from "../services/oura-apimanager.service";
 import { OAuthService } from "angular2-oauth2/oauth-service";
 
 
@@ -24,7 +25,8 @@ export class MainComponent implements OnInit {
   constructor(private oauthService: OAuthService,
             private authService: AuthService,
             private http: Http,
-            private route: ActivatedRoute) { }
+            private route: ActivatedRoute,
+            private api: OuraAPIManager) { }
 
   ngOnInit() {
         // Login-Url
@@ -69,35 +71,7 @@ export class MainComponent implements OnInit {
 
           console.log("access_token", this.access_token);
 
-          let headers = new Headers({
-            'Access-Control-Allow-Origin': 'localhost:4200',
-            'Allow-Origin': 'localhost:4200'
-          });
-
-          /* TODO: fix request!
-            XHRRequest on browser is not allowed AND
-            OPTIONS request is not allowed */
-
-          let options = new RequestOptions({ headers: headers });
-
-          let url = 'https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token;
-
-          if (this.access_token) {
-            console.log(this.access_token);
-              /*let headers = new Headers({
-                  'Authorization' : 'Bearer ' + this.access_token
-              });
-              let options = new RequestOptions({ headers: headers });
-
-              this.http.get('https://api.ouraring.com/v1/userinfo?access_token=' + this.access_token, options)
-                .map((res) => {
-                    let data = res.json();
-                    return data;
-                })
-                .subscribe((data: any) => {
-                    console.log(data);
-                });*/
-          }
+          let personalInfo = this.api.getPersonalInfo(this.access_token);
 
         });
   }

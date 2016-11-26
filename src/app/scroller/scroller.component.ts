@@ -26,9 +26,9 @@ export class ScrollerComponent implements OnInit {
 
     this.matchUserData = this.af.database.object(`users/${matchuid}`);
 
-    console.log(this.userData);
-
     this.userData.subscribe((d) => console.log("got userData", d));
+
+    this.matchUserData.subscribe((d) => console.log("got matchUserData", d));
   }
 
   public acceptMatch() {
