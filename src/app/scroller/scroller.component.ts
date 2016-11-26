@@ -40,11 +40,10 @@ export class ScrollerComponent implements OnInit {
 
     this.userDataObs = this.af.database.object(`users/${this.uid}`);
 
-    this.allUsersObs
-      .subscribe((d) => {
+    this.allUsersObs.subscribe((d) => {
+      // filter out my own user data from allusers
+      this.allUsers = d.filter((d) => d.$key != this.uid);
 
-      this.allUsers = d;
-      console.log("allUsers", this.allUsers);
       this.loading = false;
       this.currentIndex = 0;
 
