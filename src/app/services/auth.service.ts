@@ -10,11 +10,11 @@ export class AuthService {
     }
 
     public login(email: string, password: string) {
-        this.af.auth.login({ email: email, password: password });
+        this.auth.login({ email: email, password: password });
     }
 
     public logout() {
-        this.af.auth.logout();
+        this.auth.logout();
     }
 
     public isLoggedIn() {

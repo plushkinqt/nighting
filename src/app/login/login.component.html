@@ -3,6 +3,7 @@
   <!-- <label for="txtLoginUsername">Username: </label> -->
   <input id="txtLoginUsername" class="form-control" type="text" placeholder="Username">
   <!-- <label for="txtLoginPassword">Password: </label> -->
-  <input id="txtLoginPassword" class="form-control mt-1" type="password" placeholder="Password">
-  <button class="btn btn-primary mt-1" (click)=authService.login()>Login</button>
+  <input id="txtLoginPassword" class="form-control mt-1" type="password"
+         placeholder="Password">
+  <button class="btn btn-primary mt-1" (click)="login(emailRef.value, passRef.value)">Login</button>
 </div>

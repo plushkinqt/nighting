@@ -5,8 +5,11 @@ import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { OAuthService } from 'angular2-oauth2/oauth-service';
-import { AngularFireModule, FirebaseAppConfig, firebaseAuthConfig } from 'angularfire2';
-import { AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule,
+    FirebaseAppConfig,
+    firebaseAuthConfig,
+    AuthProviders,
+    AuthMethods } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { ScrollerComponent } from './scroller/scroller.component';
@@ -32,7 +35,8 @@ const appRoutes: Routes = [
 
 const FIREBASE_CONFIG: FirebaseAppConfig = environment.firebase;
 const FIREBASE_AUTH_CONFIG = {
-  provider: AuthProviders.Password
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
 };
 
 @NgModule({
