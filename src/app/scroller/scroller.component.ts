@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 
@@ -33,7 +34,10 @@ export class ScrollerComponent implements OnInit {
 
   @Input() access_token;
 
-  constructor(private af: AngularFire, private match: MatchService, private auth: AuthService) { }
+  constructor(private af: AngularFire,
+            private match: MatchService,
+            private auth: AuthService,
+            private router: Router) { }
 
   ngOnInit() {
     this.loading = true;
@@ -80,6 +84,7 @@ export class ScrollerComponent implements OnInit {
 
   public acceptMatch() {
     console.log('Match accepted!');
+    this.router.navigate(['/letssleep', this.matchedUser.userinfo.name]);
   }
 
   public nextMatch() {
